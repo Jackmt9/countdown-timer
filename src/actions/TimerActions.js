@@ -32,7 +32,7 @@ export const deleteTimer = (id) => {
         .then(r => r.json())
         .then(response => {
             console.log(response)
-            dispatch({type: DELETE_TIMER, id})
+            dispatch({type: 'DELETE_TIMER', id})
         })
     }
 }
@@ -50,7 +50,7 @@ export const updateTimer = (timer) => {
         })
         .then(r => r.json())
         .then(timer => {
-            console.log(response)
+            console.log(timer)
             dispatch({type: 'UPDATE_TIMER', timer})
         })
     }

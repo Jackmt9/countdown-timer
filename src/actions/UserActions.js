@@ -61,8 +61,8 @@ export const logoutUser = () => {
     }
 }
 
-export const stayLoggedIn = () => {
-    console.log('Re-logging In...')
+export const validateUser = () => {
+    console.log('Validating User...')
     return (dispatch) => {
         fetch(BACKEND + 'stay_logged_in', {
             headers: {

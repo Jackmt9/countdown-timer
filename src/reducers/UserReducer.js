@@ -1,4 +1,4 @@
-const UserReducer = (state = { user: {} }, action) => {
+const UserReducer = (state = {}, action) => {
     switch(action.type){
 
         case 'MOUNT_USER':

@@ -7,6 +7,7 @@ import { createStore, applyMiddleware, compose } from 'redux'
 import { Provider } from 'react-redux'
 import thunk from 'redux-thunk'
 import rootReducer from './reducers/RootReducer';
+import { validateUser } from './actions/UserActions'
 
 const enhancers = [ 
   window.__REDUX_DEVTOOLS_EXTENSION__ && window.__REDUX_DEVTOOLS_EXTENSION__(),
@@ -14,6 +15,8 @@ const enhancers = [
 ]
 
 let store = createStore(rootReducer, compose(...enhancers))
+
+if (localStorage.token) { validateUser() }
 
 ReactDOM.render(
   <Provider store={store}>

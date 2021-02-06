@@ -40,7 +40,7 @@ class TimerCard extends Component {
         const days = Math.floor(time / (60 * 60 * 24))
 
         return (
-            <div class='timer-card' id={this.props.timer.id}>
+            <div className='timer-card' id={this.props.timer.id}>
                 <p>{this.props.timer.title}</p>
                 Days: {days}
                 <br/>
