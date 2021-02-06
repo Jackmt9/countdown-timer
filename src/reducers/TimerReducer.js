@@ -1,6 +1,6 @@
 import cuid from 'cuid'
 
-const TimerReducer = (state = {timers: []}, action) => {
+const TimerReducer = (state = { timers: [] }, action) => {
     switch(action.type){
         case 'ADD_TIMER':
             return {
@@ -18,6 +18,8 @@ const TimerReducer = (state = {timers: []}, action) => {
                 ...state,
                 timers: state.timers.filter(timer => timer.id !== updatedTimer.id).push(updatedTimer)
             }
+        default:
+            return state
     }
 }
 
