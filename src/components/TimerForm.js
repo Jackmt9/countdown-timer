@@ -13,7 +13,9 @@ class TimerForm extends Component {
 
     handleSubmit = (event) => {
         event.preventDefault()
-        this.props.addTimer(this.state)
+        const isoDate = new Date(this.state.date + " " + this.state.time).toISOString()
+        debugger
+        this.props.addTimer({isoDate, title: this.state.title})
         this.setState({
             title: '',
             date: '',

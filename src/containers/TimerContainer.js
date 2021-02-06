@@ -8,10 +8,10 @@ class TimerContainer extends Component {
     render() { 
         return (
             <div>
-                <h1>Timer Container</h1>
+                <h1>Countdown Timer</h1>
                 <TimerForm addTimer={this.props.addTimer}/>
                 <h2>Timers</h2>
-                {this.props.timers.map(timer => { return <TimerCard key={timer.id} timer={timer} deleteTimer={this.props.deleteTimer}/> })}
+                {this.props.timers.map(timer => { return <TimerCard key={timer.id} timer={timer} deleteTimer={this.props.deleteTimer} /> })}
             </div>
         );
     }
