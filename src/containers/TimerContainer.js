@@ -18,6 +18,7 @@ class TimerContainer extends Component {
 }
 
 const mapStateToProps = (state) => {
+    // debugger
     return {
         timers: state.timers
     }

@@ -1,6 +1,6 @@
 import cuid from 'cuid'
 
-export default function TimerReducer(state = {timers: []}, action){
+const TimerReducer = (state = {timers: []}, action) => {
     switch(action.type){
         case 'ADD_TIMER':
             return {
@@ -20,3 +20,5 @@ export default function TimerReducer(state = {timers: []}, action){
             }
     }
 }
+
+export default TimerReducer;
