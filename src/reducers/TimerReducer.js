@@ -5,7 +5,7 @@ const TimerReducer = (state = { timers: [] }, action) => {
         case 'ADD_TIMER':
             return {
                 ...state,
-                timers: state.timers.concat({name: action.timer.name, time: action.timer.time, id: cuid()})
+                timers: state.timers.concat({title: action.timer.title, time: action.timer.time, date: action.timer.date, id: cuid()})
             }
         case 'DELETE_TIMER':
             return {

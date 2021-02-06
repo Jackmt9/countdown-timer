@@ -11,7 +11,7 @@ class TimerContainer extends Component {
                 <h1>Timer Container</h1>
                 <TimerForm addTimer={this.props.addTimer}/>
                 <h2>Timers</h2>
-                {this.props.timers.map(timer => { return <TimerCard timer={timer} deleteTimer={this.props.deleteTimer}/> })}
+                {this.props.timers.map(timer => { return <TimerCard key={timer.id} timer={timer} deleteTimer={this.props.deleteTimer}/> })}
             </div>
         );
     }

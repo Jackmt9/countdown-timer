@@ -3,7 +3,6 @@ class TimerForm extends Component {
 
     state = { 
         title: '',
-        utc: '',
         date: '',
         time: ''
     }
@@ -12,8 +11,19 @@ class TimerForm extends Component {
         return new Date().toISOString().slice(0,10)
     }
 
-    handleSubmit = () => {
+    handleSubmit = (event) => {
+        event.preventDefault()
         this.props.addTimer(this.state)
+        this.setState({
+            title: '',
+            date: '',
+            time: ''
+        });
+    }
+
+    handleChange = (event) => {
+        this.setState({ [event.target.name]: event.target.value });
+        console.log(this.state)
     }
 
     render() { 
@@ -21,9 +31,18 @@ class TimerForm extends Component {
             <div>
                 <form onSubmit={this.handleSubmit}>
                     <label>
-                        Date:
-                        <input type='date' name='date' min={this.todaysDate}></input>
+                        Timer Name
+                        <input type='text' name='title' onChange={this.handleChange} value={this.state.title}/>
                     </label>
+                    <label>
+                        Date:
+                        <input type='date' name='date' min={this.todaysDate()} onChange={this.handleChange} value={this.state.date}/>
+                    </label>
+                    <label>
+                        Time:
+                        <input type='time' name='time' onChange={this.handleChange} value={this.state.time}/>
+                    </label>
+                    <input type='submit' value='Submit'/>
                 </form>
             </div>
         );
