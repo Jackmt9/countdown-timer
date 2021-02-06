@@ -1,6 +1,6 @@
 import React, { Component } from 'react';
 import TimerForm from '../components/TimerForm'
-import TimerCard from '../components/TimerCard'
+import TimerCard from '../components/TimerCard/TimerCard'
 import { connect } from 'react-redux'
 
 class TimerContainer extends Component {
@@ -18,7 +18,6 @@ class TimerContainer extends Component {
 }
 
 const mapStateToProps = (state) => {
-    // debugger
     return {
         timers: state.timers
     }

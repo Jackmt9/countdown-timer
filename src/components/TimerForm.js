@@ -1,25 +1,30 @@
 import React, { Component } from 'react';
 class TimerForm extends Component {
 
-    state = { 
-        title: '',
-        date: '',
-        time: ''
-    }
-
-    todaysDate = () => {
+    currentDate = () => {
         return new Date().toISOString().slice(0,10)
     }
 
+    currentTime = () => {
+        const date = new Date()
+        return `${date.getHours()}:${date.getMinutes()}`
+    }
+
+    state = { 
+        title: '',
+        date: this.currentDate(),
+        time: this.currentTime()
+    }
+
+
     handleSubmit = (event) => {
         event.preventDefault()
-        const isoDate = new Date(this.state.date + " " + this.state.time).toISOString()
-        debugger
-        this.props.addTimer({isoDate, title: this.state.title})
+        const time = Date.parse(new Date(this.state.date + " " + this.state.time))
+        this.props.addTimer({time, title: this.state.title})
         this.setState({
             title: '',
-            date: '',
-            time: ''
+            date: this.currentDate(),
+            time: this.currentTime()
         });
     }
 
@@ -38,13 +43,13 @@ class TimerForm extends Component {
                     </label>
                     <label>
                         Date:
-                        <input type='date' name='date' min={this.todaysDate()} onChange={this.handleChange} value={this.state.date}/>
+                        <input type='date' name='date' min={this.currentDate()} onChange={this.handleChange} value={this.state.date}/>
                     </label>
                     <label>
                         Time:
                         <input type='time' name='time' onChange={this.handleChange} value={this.state.time}/>
                     </label>
-                    <input type='submit' value='Submit'/>
+                    <input type='submit' value='Add Timer'/>
                 </form>
             </div>
         );
