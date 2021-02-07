@@ -1,4 +1,6 @@
 import React, { Component } from 'react';
+import { connect } from 'react-redux'
+import { loginUser } from '../../actions/UserActions'
 
 class LoginForm extends Component {
     state = {
@@ -34,4 +36,10 @@ class LoginForm extends Component {
     }
 }
  
-export default LoginForm;
+
+const mapDispatchToProps = (dispatch) => {
+    return {
+        loginUser
+    }
+}
+export default connect(null, mapDispatchToProps)(LoginForm);

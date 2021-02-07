@@ -2,7 +2,6 @@ import './App.css';
 import TimerContainer from './containers/TimerContainer'
 import { BrowserRouter as Router, Switch, Route, Link, Redirect } from "react-router-dom";
 import NavBar from './components/NavBar/NavBar'
-import UserContainer from './containers/UserContainer';
 import LoginForm from './components/LoginForm/LoginForm'
 import RegisterForm from './components/RegisterForm'
 import { createUser, loginUser, deleteUser, logoutUser, updateUserInfo} from './actions/UserActions'
@@ -19,11 +18,19 @@ function App() {
       <Router>
         <NavBar />
         <Switch>
-          <Route path='/timers' component={TimerContainer}/>
-          <Route path='/login' component={LoginForm}/>
-          <Route path='/register' component={null}/>
-          <Route path='/profile' component={UserContainer}/>
-          <Route path='/logout' render={logout}/>
+          {
+            (localStorage.token) ? 
+            <>
+            <Route path='/profile' component={null}/>
+            <Route path='/logout' render={logout}/>
+            <Route path='/timers' component={TimerContainer}/>
+            </>
+            :
+            <>
+            <Route path='/login' component={LoginForm}/>
+            <Route path='/register' component={RegisterForm}/>
+            </>
+          }
         </Switch>
       </Router>
     </div>

@@ -1,5 +1,7 @@
 import React, { Component } from 'react';
 import SimpleReactValidator from 'simple-react-validator';
+import { connect } from 'react-redux'
+import { createUser } from '../actions/UserActions'
 class RegisterForm extends Component {
     state = {
         firstName: '',
@@ -23,6 +25,7 @@ class RegisterForm extends Component {
         event.preventDefault()
         if (this.validator.allValid()) {
             alert('You submitted the form and stuff!');
+            this.props.createUser(this.state)
           } else {
             this.validator.showMessages();
             // rerender to show messages for the first time
@@ -33,7 +36,6 @@ class RegisterForm extends Component {
         //     alert('Passwords Don\'t Match')
         // }
         // // error handling needed
-        // this.props.createUser(this.state)
     }
 
     render() { 
@@ -75,4 +77,9 @@ class RegisterForm extends Component {
     }
 }
  
-export default RegisterForm;
+const mapDispatchToProps = (dispatch) => {
+    return {
+        createUser
+    }
+}
+export default connect(null, mapDispatchToProps)(RegisterForm);
