@@ -1,24 +1,33 @@
 import './App.css';
 import TimerContainer from './containers/TimerContainer'
-import { BrowserRouter as Router, Switch, Route, Link } from "react-router-dom";
-import TimerReducer from './reducers/TimerReducer';
+import { BrowserRouter as Router, Switch, Route, Link, Redirect } from "react-router-dom";
 import NavBar from './components/NavBar/NavBar'
 import UserContainer from './containers/UserContainer';
-
+import LoginForm from './components/LoginForm/LoginForm'
+import RegisterForm from './components/RegisterForm'
+import { createUser, loginUser, deleteUser, logoutUser, updateUserInfo} from './actions/UserActions'
+import { connect } from 'react-redux'
 function App() {
+
+  const logout = () => {
+    localStorage.clear()
+    return (<Redirect to="/" />)
+  }
+
   return (
     <div>
       <Router>
         <NavBar />
         <Switch>
           <Route path='/timers' component={TimerContainer}/>
-          <Route path='/login' component={null}/>
+          <Route path='/login' component={LoginForm}/>
           <Route path='/register' component={null}/>
           <Route path='/profile' component={UserContainer}/>
+          <Route path='/logout' render={logout}/>
         </Switch>
       </Router>
     </div>
   );
 }
 
-export default App;
+export default connect(null)(App);

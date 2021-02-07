@@ -16,9 +16,9 @@ class UserContainer extends Component {
     }
 }
  
-const mapStateToProps = (state) => {
-    return {}
-}
+// const mapStateToProps = (state) => {
+//     return {}
+// }
 
 const mapDispatchToProps = (dispatch) => {
     return {
