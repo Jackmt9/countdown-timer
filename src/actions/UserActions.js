@@ -13,10 +13,8 @@ export const createUser = (newUserInfo) => {
             body: JSON.stringify(decamelizeKeys(newUserInfo))
         })
         .then(r => r.json())
-        .then(({user, token}) => {
-            console.log(camelizeKeys(user))
-            localStorage.token = token
-            dispatch({type: 'MOUNT_USER', user: camelizeKeys(user)})
+        .then(response => {
+            handleResponseAndMount(response, dispatch)
         })
     }
 }
@@ -32,10 +30,8 @@ export const loginUser = (userInfo) => {
             body: JSON.stringify(decamelizeKeys(userInfo))
         })
         .then(r => r.json())
-        .then(({user, token}) => {
-            console.log(camelizeKeys(user))
-            localStorage.token = token
-            dispatch({type: 'MOUNT_USER', user: camelizeKeys(user)})
+        .then(response => {
+            handleResponseAndMount(response, dispatch)
         })
     }
 }
@@ -51,9 +47,7 @@ export const deleteUser = () => {
         })
         .then(r => r.json())
         .then(response => {
-            console.log(response)
-            localStorage.token.clear()
-            dispatch({type: 'UNMOUNT_USER'})
+            handleResponseAndUnmount(response, dispatch)
         })
     }
 }
@@ -61,8 +55,7 @@ export const deleteUser = () => {
 export const logoutUser = () => {
     console.log('Logging Out User...')
     return (dispatch) => {
-        localStorage.clear()
-        dispatch({type: 'UNMOUNT_USER'})
+        handleResponseAndUnmount(null, dispatch)
     }
 }
 
@@ -75,9 +68,8 @@ export const validateUser = () => {
             }
         })
         .then(r => r.json())
-        .then(user => {
-            console.log(camelizeKeys(user))
-            dispatch({type: 'MOUNT_USER', user: camelizeKeys(user)})
+        .then(response => {
+            handleResponseAndMount(response, dispatch)
         })
     }
 }
@@ -94,9 +86,29 @@ export const updateUserInfo = (updatedUser) => {
             body: JSON.stringify(decamelizeKeys(updatedUser))
         })
         .then(r => r.json())
-        .then(user => {
-            console.log(user)
-            dispatch({type: 'MOUNT_USER', user: camelizeKeys(user)})
+        .then(response => {
+            handleResponseAndMount(response, dispatch)
         })
+    }
+}
+
+const handleResponseAndMount = (response, dispatch) => {
+    if (response.message){
+        localStorage.clear()
+        dispatch({type: 'UNMOUNT_USER'})
+        alert (response.message)
+    } else {
+        localStorage.token = response.token
+        dispatch({type: 'MOUNT_USER', user: camelizeKeys(response.user)})
+    }
+}
+
+
+const handleResponseAndUnmount = (response, dispatch) => {
+    if (response.message){
+        alert (response.message)
+    } else {
+        localStorage.clear()
+        dispatch({type: 'UNMOUNT_USER'})
     }
 }
