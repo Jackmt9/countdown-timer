@@ -1,3 +1,5 @@
+const {camelizeKeys, decamelizeKeys} = require('humps')
+
 const BACKEND = 'http://localhost:3001/'
 
 export const addTimer = (timer) => {
@@ -9,12 +11,12 @@ export const addTimer = (timer) => {
                 'Authorization': localStorage.token,
                 'content-type': 'application/json'
             },
-            body: JSON.stringify(timer)
+            body: JSON.stringify(decamelizeKeys(timer))
         })
         .then(r => r.json())
-        .then(response => {
-            console.log(response)
-            dispatch({type: 'ADD_TIMER', timer})
+        .then(timer => {
+            console.log(camelizeKeys(timer))
+            dispatch({type: 'ADD_TIMER', timer: camelizeKeys(timer)})
         })
     }
 }
@@ -46,12 +48,12 @@ export const updateTimer = (timer) => {
                 'Authorization': localStorage.token,
                 'content-type': 'application/json'
             },
-            body: JSON.stringify(timer)
+            body: JSON.stringify(decamelizeKeys(timer))
         })
         .then(r => r.json())
         .then(timer => {
-            console.log(timer)
-            dispatch({type: 'UPDATE_TIMER', timer})
+            console.log(camelizeKeys(timer))
+            dispatch({type: 'UPDATE_TIMER', timer: camelizeKeys(timer)})
         })
     }
 }

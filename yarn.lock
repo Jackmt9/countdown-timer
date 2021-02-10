@@ -5774,6 +5774,11 @@
   "resolved" "https://registry.yarnpkg.com/human-signals/-/human-signals-1.1.1.tgz"
   "version" "1.1.1"
 
+"humps@^2.0.1":
+  "integrity" "sha1-3QLqYIG9BWjcXQcxhEY5V7qe+ao="
+  "resolved" "https://registry.npmjs.org/humps/-/humps-2.0.1.tgz"
+  "version" "2.0.1"
+
 "iconv-lite@0.4.24":
   "integrity" "sha512-v3MXnZAcvnywkTUEZomIActle7RXXeedOR31wwl7VlyoXO4Qi9arvSenNQWne1TcRwhCL1HwLI21bEqdpj8/rA=="
   "resolved" "https://registry.yarnpkg.com/iconv-lite/-/iconv-lite-0.4.24.tgz"
@@ -10192,11 +10197,6 @@
   "integrity" "sha512-VUJ49FC8U1OxwZLxIbTTrDvLnf/6TDgxZcK8wxR8zs13xpx7xbG60ndBlhNrFi2EMuFRoeDoJO7wthSLq42EjA=="
   "resolved" "https://registry.yarnpkg.com/signal-exit/-/signal-exit-3.0.3.tgz"
   "version" "3.0.3"
-
-"simple-react-validator@^1.6.0":
-  "integrity" "sha512-A4DZwxUqB1oddoiuJ7TTVDS2ZY/yQteCcUw9rwLk81SnVFYg2uqSbU37vBkP9klfVWaoEaiczRiQlWQNNVx5Kg=="
-  "resolved" "https://registry.npmjs.org/simple-react-validator/-/simple-react-validator-1.6.0.tgz"
-  "version" "1.6.0"
 
 "simple-swizzle@^0.2.2":
   "integrity" "sha1-pNprY1/8zMoz9w0Xy5JZLeleVXo="

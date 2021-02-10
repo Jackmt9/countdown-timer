@@ -1,5 +1,4 @@
 import React, { Component } from 'react';
-import SimpleReactValidator from 'simple-react-validator';
 import { connect } from 'react-redux'
 import { createUser } from '../actions/UserActions'
 class RegisterForm extends Component {
@@ -12,29 +11,13 @@ class RegisterForm extends Component {
         phone: ''
     }
 
-    //WARNING! To be deprecated in React v17. Use componentDidMount instead.
-    componentWillMount() {
-        this.validator = new SimpleReactValidator();
-    }
-
     handleChange = (event) => {
         this.setState({ [event.target.name]: event.target.value });
     }
 
     handleSubmit = (event) => {
         event.preventDefault()
-        if (this.validator.allValid()) {
-            alert('You submitted the form and stuff!');
-            this.props.createUser(this.state)
-          } else {
-            this.validator.showMessages();
-            // rerender to show messages for the first time
-            // you can use the autoForceUpdate option to do this automatically`
-            this.forceUpdate();
-          }
-        // if(this.state.password !== this.state.password2){
-        //     alert('Passwords Don\'t Match')
-        // }
+        this.props.createUser(this.state)
         // // error handling needed
     }
 
@@ -46,22 +29,18 @@ class RegisterForm extends Component {
                         First name
                         <input type='text' name='firstName' onChange={this.handleChange} value={this.state.firstName}/>
                     </label>
-                    {this.validator.message('firstName', this.state.firstName, 'required|alpha')}
                     <label>
                         Last name
                         <input type='text' name='lastName' onChange={this.handleChange} value={this.state.lastName}/>
                     </label>
-                    {this.validator.message('lastName', this.state.lastName, 'required|alpha')}
                     <label>
                         Email
                         <input type='text' name='email' onChange={this.handleChange} value={this.state.email}/>
                     </label>
-                    {this.validator.message('email', this.state.email, 'required|email', { className: 'text-danger' })}
                     <label>
                         Phone
                         <input type='text' name='phone' onChange={this.handleChange} value={this.state.phone}/>
                     </label>
-                    {this.validator.message('phone', this.state.phone, 'required|phone')}
                     <label>
                         Password
                         <input type='password' name='password' onChange={this.handleChange} value={this.state.password}/>

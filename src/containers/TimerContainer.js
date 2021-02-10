@@ -5,8 +5,8 @@ import { connect } from 'react-redux'
 import { addTimer, deleteTimer, updateTimer } from '../actions/TimerActions'
 
 class TimerContainer extends Component {
-
-    render() { 
+ 
+    render() {
         return (
             <div className='timer-container'>
                 <h1>Countdown Timer</h1>

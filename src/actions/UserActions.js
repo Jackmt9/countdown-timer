@@ -1,3 +1,5 @@
+const {camelizeKeys, decamelizeKeys} = require('humps')
+
 const BACKEND = 'http://localhost:3001/'
 
 export const createUser = (newUserInfo) => {
@@ -8,12 +10,12 @@ export const createUser = (newUserInfo) => {
             headers: {
                 'content-type': 'application/json'
             },
-            body: JSON.stringify(newUserInfo)
+            body: JSON.stringify(decamelizeKeys(newUserInfo))
         })
         .then(r => r.json())
         .then(user => {
-            console.log(user)
-            dispatch({type: 'MOUNT_USER', user})
+            console.log(camelizeKeys(user))
+            dispatch({type: 'MOUNT_USER', user: camelizeKeys(user)})
         })
     }
 }
@@ -26,12 +28,12 @@ export const loginUser = (userInfo) => {
             headers: {
                 'content-type': 'application/json'
             },
-            body: JSON.stringify(userInfo)
+            body: JSON.stringify(decamelizeKeys(userInfo))
         })
         .then(r => r.json())
         .then(user => {
-            console.log(user)
-            dispatch({type: 'MOUNT_USER', user})
+            console.log(camelizeKeys(user))
+            dispatch({type: 'MOUNT_USER', user: camelizeKeys(user)})
         })
     }
 }
@@ -71,8 +73,8 @@ export const validateUser = () => {
         })
         .then(r => r.json())
         .then(user => {
-            console.log(user)
-            dispatch({type: 'MOUNT_USER', user})
+            console.log(camelizeKeys(user))
+            dispatch({type: 'MOUNT_USER', user: camelizeKeys(user)})
         })
     }
 }
@@ -86,12 +88,12 @@ export const updateUserInfo = (updatedUser) => {
                 Authorization: localStorage.token,
                 "content-type": "application/json",
             },
-            body: JSON.stringify(updatedUser)
+            body: JSON.stringify(decamelizeKeys(updatedUser))
         })
         .then(r => r.json())
         .then(user => {
             console.log(user)
-            dispatch({type: 'MOUNT_USER', user})
+            dispatch({type: 'MOUNT_USER', user: camelizeKeys(user)})
         })
     }
 }
