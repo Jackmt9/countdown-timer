@@ -4,7 +4,7 @@ import { loginUser } from '../../actions/UserActions'
 
 class LoginForm extends Component {
     state = {
-        username: '',
+        email: '',
         password: ''
     }
 
@@ -22,8 +22,8 @@ class LoginForm extends Component {
             <div className='login-form'>
                 <form onSubmit={this.handleSubmit}>
                     <label>
-                        Username
-                        <input type='text' name='username' onChange={this.handleChange} value={this.state.username}/>
+                        Email
+                        <input type='text' name='email' onChange={this.handleChange} value={this.state.email}/>
                     </label>
                     <label>
                         Password
@@ -39,7 +39,7 @@ class LoginForm extends Component {
 
 const mapDispatchToProps = (dispatch) => {
     return {
-        loginUser
+        loginUser: (user) => dispatch(loginUser(user))
     }
 }
 export default connect(null, mapDispatchToProps)(LoginForm);

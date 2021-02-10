@@ -13,8 +13,9 @@ export const createUser = (newUserInfo) => {
             body: JSON.stringify(decamelizeKeys(newUserInfo))
         })
         .then(r => r.json())
-        .then(user => {
+        .then(({user, token}) => {
             console.log(camelizeKeys(user))
+            localStorage.token = token
             dispatch({type: 'MOUNT_USER', user: camelizeKeys(user)})
         })
     }
@@ -31,8 +32,9 @@ export const loginUser = (userInfo) => {
             body: JSON.stringify(decamelizeKeys(userInfo))
         })
         .then(r => r.json())
-        .then(user => {
+        .then(({user, token}) => {
             console.log(camelizeKeys(user))
+            localStorage.token = token
             dispatch({type: 'MOUNT_USER', user: camelizeKeys(user)})
         })
     }
@@ -50,6 +52,7 @@ export const deleteUser = () => {
         .then(r => r.json())
         .then(response => {
             console.log(response)
+            localStorage.token.clear()
             dispatch({type: 'UNMOUNT_USER'})
         })
     }
@@ -58,7 +61,7 @@ export const deleteUser = () => {
 export const logoutUser = () => {
     console.log('Logging Out User...')
     return (dispatch) => {
-        localStorage.token.clear()
+        localStorage.clear()
         dispatch({type: 'UNMOUNT_USER'})
     }
 }

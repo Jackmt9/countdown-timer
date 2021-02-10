@@ -6,9 +6,8 @@ class RegisterForm extends Component {
         firstName: '',
         lastName: '',
         password: '',
-        password2: '',
-        email: '',
-        phone: ''
+        // password2: '',
+        email: ''
     }
 
     handleChange = (event) => {
@@ -38,17 +37,13 @@ class RegisterForm extends Component {
                         <input type='text' name='email' onChange={this.handleChange} value={this.state.email}/>
                     </label>
                     <label>
-                        Phone
-                        <input type='text' name='phone' onChange={this.handleChange} value={this.state.phone}/>
-                    </label>
-                    <label>
                         Password
                         <input type='password' name='password' onChange={this.handleChange} value={this.state.password}/>
                     </label>
-                    <label>
+                    {/* <label>
                         Re-enter Password
                         <input type='password' name='password2' onChange={this.handleChange} value={this.state.password2}/>
-                    </label>
+                    </label> */}
                     <input type='submit' value='Create Account'/>
                 </form>
             </div>
@@ -58,7 +53,7 @@ class RegisterForm extends Component {
  
 const mapDispatchToProps = (dispatch) => {
     return {
-        createUser
+        createUser: (user) => dispatch(createUser(user))
     }
 }
 export default connect(null, mapDispatchToProps)(RegisterForm);

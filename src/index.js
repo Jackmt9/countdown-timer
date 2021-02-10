@@ -9,14 +9,15 @@ import thunk from 'redux-thunk'
 import rootReducer from './reducers/RootReducer';
 import { validateUser } from './actions/UserActions'
 
+const composeEnhancers = window.__REDUX_DEVTOOLS_EXTENSION_COMPOSE__ || compose;
+
 const enhancers = [ 
-  window.__REDUX_DEVTOOLS_EXTENSION__ && window.__REDUX_DEVTOOLS_EXTENSION__(),
   applyMiddleware(thunk)
 ]
 
-let store = createStore(rootReducer, compose(...enhancers))
+let store = createStore(rootReducer, composeEnhancers(...enhancers))
 
-if (localStorage.token) { validateUser() }
+if (localStorage.token) { store.dispatch(validateUser()) }
 
 ReactDOM.render(
   <Provider store={store}>
