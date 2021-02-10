@@ -1,5 +1,6 @@
 import React, { Component } from 'react';
 import { connect } from 'react-redux'
+import { Redirect } from 'react-router-dom';
 import { createUser } from '../actions/UserActions'
 class RegisterForm extends Component {
     state = {
@@ -7,7 +8,8 @@ class RegisterForm extends Component {
         lastName: '',
         password: '',
         // password2: '',
-        email: ''
+        email: '',
+        redirect: false
     }
 
     handleChange = (event) => {
@@ -17,6 +19,7 @@ class RegisterForm extends Component {
     handleSubmit = (event) => {
         event.preventDefault()
         this.props.createUser(this.state)
+        this.props.history.push('/timers');
         // // error handling needed
     }
 

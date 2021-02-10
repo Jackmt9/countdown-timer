@@ -15,6 +15,7 @@ class LoginForm extends Component {
     handleSubmit = (event) => {
         event.preventDefault()
         this.props.loginUser(this.state)
+        this.props.history.push('/timers')
     }
 
     render() { 

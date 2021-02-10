@@ -9,14 +9,14 @@ const NavBar = () => {
                     Home
                 </NavLink>
             </li>
-            <li>
-                <NavLink to='/timers'>
-                    Timers
-                </NavLink>
-            </li>
             {
                 (localStorage.token) ? 
                 <>
+                <li>
+                    <NavLink to='/timers'>
+                        Timers
+                    </NavLink>
+                </li>
                 <li>
                 <NavLink to='/logout'>
                     Logout
