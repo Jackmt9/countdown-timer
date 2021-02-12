@@ -12,6 +12,9 @@ const TimerReducer = (state = [], action) => {
             const updatedTimer = action.timer
             return state.filter(timer => timer.id !== updatedTimer.id).push(updatedTimer)
 
+        case 'SET_TIMERS':
+            return action.timers
+
         default:
             return state
     }

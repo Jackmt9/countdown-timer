@@ -39,21 +39,38 @@ export const deleteTimer = (id) => {
     }
 }
 
-export const updateTimer = (timer) => {
-    console.log('Updating Timer...')
+// export const updateTimer = (timer) => {
+//     console.log('Updating Timer...')
+//     return (dispatch) => {
+//         fetch(BACKEND + 'timers/' + timer.id, {
+//             method: 'PUT',
+//             headers: {
+//                 'Authorization': localStorage.token,
+//                 'content-type': 'application/json'
+//             },
+//             body: JSON.stringify(decamelizeKeys(timer))
+//         })
+//         .then(r => r.json())
+//         .then(timer => {
+//             console.log(camelizeKeys(timer))
+//             dispatch({type: 'UPDATE_TIMER', timer: camelizeKeys(timer)})
+//         })
+//     }
+// }
+
+export const getTimers = () => {
+    console.log('Getting timers...')
     return (dispatch) => {
-        fetch(BACKEND + 'timers/' + timer.id, {
-            method: 'PUT',
+        fetch(BACKEND + 'timers', {
             headers: {
                 'Authorization': localStorage.token,
                 'content-type': 'application/json'
-            },
-            body: JSON.stringify(decamelizeKeys(timer))
+            }
         })
         .then(r => r.json())
-        .then(timer => {
-            console.log(camelizeKeys(timer))
-            dispatch({type: 'UPDATE_TIMER', timer: camelizeKeys(timer)})
+        .then(timers => {
+            console.log(camelizeKeys(timers))
+            dispatch({type: 'SET_TIMERS', timers: camelizeKeys(timers)})
         })
     }
 }

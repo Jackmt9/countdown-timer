@@ -92,6 +92,8 @@ export const updateUserInfo = (updatedUser) => {
     }
 }
 
+// handles fetch responses and accounts for error messages
+
 const handleResponseAndMount = (response, dispatch) => {
     if (response.message){
         localStorage.clear()

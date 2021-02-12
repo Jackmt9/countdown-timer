@@ -51,7 +51,6 @@ class TimerCard extends Component {
                 Seconds: {seconds}
                 <br/>
                 <button onClick={() => this.props.deleteTimer(this.props.timer.id)}>X</button>
-                <button onClick={() => null}>Edit</button>
             </div>
         );
     }

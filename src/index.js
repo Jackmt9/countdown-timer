@@ -17,6 +17,7 @@ const enhancers = [
 
 let store = createStore(rootReducer, composeEnhancers(...enhancers))
 
+// Remounts user data if token is present and valid
 if (localStorage.token) { store.dispatch(validateUser()) }
 
 ReactDOM.render(

@@ -2,10 +2,14 @@ import React, { Component } from 'react';
 import TimerForm from '../components/TimerForm'
 import TimerCard from '../components/TimerCard/TimerCard'
 import { connect } from 'react-redux'
-import { addTimer, deleteTimer, updateTimer } from '../actions/TimerActions'
+import { addTimer, deleteTimer, getTimers } from '../actions/TimerActions'
 
 class TimerContainer extends Component {
- 
+    
+    componentDidMount() {
+        this.props.getTimers()
+    }
+
     render() {
         return (
             <div className='timer-container'>
@@ -28,9 +32,10 @@ const mapStateToProps = (state) => {
 
 const mapDispatchToProps = (dispatch) => {
     return {
-        addTimer: (timer) => dispatch({type: 'ADD_TIMER', timer}),
-        deleteTimer: (id) => dispatch({type: 'DELETE_TIMER', id}),
-        updateTimer: (timer) => dispatch({type: 'UPDATE_TIMER', timer})
+        addTimer: (timer) => dispatch(addTimer(timer)),
+        deleteTimer: (id) => dispatch(deleteTimer(id)),
+        // updateTimer: (timer) => dispatch({type: 'UPDATE_TIMER', timer}),
+        getTimers: () => dispatch(getTimers())
     }
 }
 
