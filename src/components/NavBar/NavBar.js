@@ -1,42 +1,43 @@
 import { NavLink } from 'react-router-dom'
+import './NavBar.css'
 
 
 const NavBar = () => {
     return (
-        <ul className='nav-bar'>
-            <li>
-                <NavLink exact to='/'>
+        <ul className="nav">
+            <li className="nav-item">
+                <NavLink exact to='/' className="nav-link">
                     Home
                 </NavLink>
             </li>
             {
                 (localStorage.token) ? 
                 <>
-                <li>
-                    <NavLink to='/timers'>
+                <li class="nav-item">
+                    <NavLink to='/timers' className="nav-link">
                         Timers
                     </NavLink>
                 </li>
-                <li>
-                <NavLink to='/logout'>
+                <li class="nav-item">
+                <NavLink to='/logout' className="nav-link">
                     Logout
                 </NavLink>
                 </li>
-                <li>
-                    <NavLink to='/profile'>
+                <li class="nav-item">
+                    <NavLink to='/profile' className="nav-link">
                         Profile
                     </NavLink>
                 </li>
                 </>
                 :
                 <>
-                <li>
-                <NavLink to='/login'>
+                <li class="nav-item">
+                <NavLink to='/login' className="nav-link">
                     Login
                 </NavLink>
                 </li>
-                <li>
-                <NavLink to='/register'>
+                <li class="nav-item">
+                <NavLink to='/register' className="nav-link">
                     Register
                 </NavLink>
                 </li>
