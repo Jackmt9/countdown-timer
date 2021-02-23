@@ -18,22 +18,24 @@ function App() {
     <div>
       <Router>
         <NavBar />
-        <Switch>
-          <Route exact path='/' component={null}/>
-          {
-            (localStorage.token) ? 
-            <>
-            <Route path='/profile' component={null}/>
-            <Route path='/logout' render={logout}/>
-            <Route path='/timers' component={TimerContainer}/>
-            </>
-            :
-            <>
-            <Route path='/login' component={LoginForm}/>
-            <Route path='/register' component={RegisterForm}/>
-            </>
-          }
-        </Switch>
+        <div style={{padding: 20}}>
+          <Switch>
+            <Route exact path='/' component={null}/>
+            {
+              (localStorage.token) ? 
+              <>
+              <Route path='/profile' component={null}/>
+              <Route path='/logout' render={logout}/>
+              <Route path='/timers' component={TimerContainer}/>
+              </>
+              :
+              <>
+              <Route path='/login' component={LoginForm}/>
+              <Route path='/register' component={RegisterForm}/>
+              </>
+            }
+          </Switch>
+        </div>
       </Router>
     </div>
   );
