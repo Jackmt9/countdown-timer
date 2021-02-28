@@ -1,29 +1,28 @@
 import './App.css';
 import TimerContainer from './containers/TimerContainer';
-import { BrowserRouter as Router, Switch, Route, Link, Redirect } from "react-router-dom";
+import { BrowserRouter as Router, Switch, Route, Redirect } from "react-router-dom";
 import NavBar from './components/NavBar/NavBar'
 import LoginForm from './components/LoginForm/LoginForm'
 import RegisterForm from './components/RegisterForm'
-import { createUser, loginUser, deleteUser, logoutUser, updateUserInfo} from './actions/UserActions'
+import { logoutUser } from './actions/UserActions'
 import { connect } from 'react-redux'
-import React, {useState} from 'react'
 
-function App(props) {
+function App({isLoggedIn, logoutUser}) {
 
   const logout = () => {
-    props.logoutUser()
+    logoutUser()
     return (<Redirect to="/" />)
   }
 
   return (
     <div>
       <Router>
-        <NavBar isLoggedIn={props.isLoggedIn}/>
+        <NavBar isLoggedIn={isLoggedIn}/>
         <div style={{padding: 20}}>
           <Switch>
             <Route exact path='/' component={null}/>
             {
-              (localStorage.token) ? 
+              (isLoggedIn) ? 
               <>
               <Route path='/profile' component={null}/>
               <Route path='/logout' render={logout}/>
