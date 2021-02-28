@@ -20,17 +20,18 @@ class LoginForm extends Component {
 
     render() { 
         return (
-            <div className='login-form'>
+            <div className='login-form mb-3'>
                 <form onSubmit={this.handleSubmit}>
-                    <label>
+                    <label className='form-label'>
                         Email
-                        <input type='text' name='email' onChange={this.handleChange} value={this.state.email}/>
+                        <input className='form-control' type='text' name='email' onChange={this.handleChange} value={this.state.email}/>
                     </label>
-                    <label>
+                    <label className='form-label'>
                         Password
-                        <input type='password' name='password' onChange={this.handleChange} value={this.state.password}/>
+                        <input className='form-control' type='password' name='password' onChange={this.handleChange} value={this.state.password}/>
                     </label>
-                    <input type='submit' value='Login'/>
+                    <br/>
+                    <input className='btn btn-primary mb-3' type='submit' value='Login'/>
                 </form>
             </div>
         );

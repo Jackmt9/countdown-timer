@@ -1,29 +1,28 @@
 import { NavLink } from 'react-router-dom'
+import React, {useState} from 'react'
 import './NavBar.css'
 
 
-const NavBar = () => {
+const NavBar = ({isLoggedIn}) => {
+
+    console.log(isLoggedIn)
+
     return (
         <ul className="nav">
-            <li className="nav-item">
-                <NavLink exact to='/' className="nav-link">
-                    Home
-                </NavLink>
-            </li>
             {
-                (localStorage.token) ? 
+                (isLoggedIn) ? 
                 <>
-                <li class="nav-item">
+                <li className="nav-item">
                     <NavLink to='/timers' className="nav-link">
                         Timers
                     </NavLink>
                 </li>
-                <li class="nav-item">
+                <li className="nav-item">
                 <NavLink to='/logout' className="nav-link">
                     Logout
                 </NavLink>
                 </li>
-                <li class="nav-item">
+                <li className="nav-item">
                     <NavLink to='/profile' className="nav-link">
                         Profile
                     </NavLink>
@@ -31,12 +30,12 @@ const NavBar = () => {
                 </>
                 :
                 <>
-                <li class="nav-item">
+                <li className="nav-item">
                 <NavLink to='/login' className="nav-link">
                     Login
                 </NavLink>
                 </li>
-                <li class="nav-item">
+                <li className="nav-item">
                 <NavLink to='/register' className="nav-link">
                     Register
                 </NavLink>

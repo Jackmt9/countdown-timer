@@ -36,23 +36,22 @@ class TimerForm extends Component {
 
     render() { 
         return (
-            <div>
+            <div className='mb-3'>
                 <form onSubmit={this.handleSubmit}>
-                    <div class='mb-3'>
-                        <label class='form-label'>
+                        <label className='form-label'>
                             Timer Name
-                            <input class='form-control' type='text' name='title' onChange={this.handleChange} value={this.state.title}/>
+                            <input className='form-control' type='text' name='title' onChange={this.handleChange} value={this.state.title}/>
                         </label>
-                        <label class='form-label'>
-                            Date:
-                            <input class='form-control' type='date' name='date' min={this.currentDate()} onChange={this.handleChange} value={this.state.date}/>
+                        <label className='form-label'>
+                            Date
+                            <input className='form-control' type='date' name='date' min={this.currentDate()} onChange={this.handleChange} value={this.state.date}/>
                         </label>
-                        <label class='form-label'>
-                            Time:
-                            <input class='form-control' type='time' name='time' onChange={this.handleChange} value={this.state.time}/>
+                        <label className='form-label'>
+                            Time
+                            <input className='form-control' type='time' name='time' onChange={this.handleChange} value={this.state.time}/>
                         </label>
-                    </div>
-                    <input type='submit' value='Add Timer'/>
+                    <br/>
+                    <input className='btn btn-primary mb-3' type='submit' value='Add Timer'/>
                 </form>
             </div>
         );

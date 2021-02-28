@@ -55,7 +55,8 @@ export const deleteUser = () => {
 export const logoutUser = () => {
     console.log('Logging Out User...')
     return (dispatch) => {
-        handleResponseAndUnmount(null, dispatch)
+        localStorage.clear()
+        dispatch({type: 'UNMOUNT_USER'})
     }
 }
 

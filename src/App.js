@@ -6,18 +6,19 @@ import LoginForm from './components/LoginForm/LoginForm'
 import RegisterForm from './components/RegisterForm'
 import { createUser, loginUser, deleteUser, logoutUser, updateUserInfo} from './actions/UserActions'
 import { connect } from 'react-redux'
+import React, {useState} from 'react'
 
-function App() {
+function App(props) {
 
   const logout = () => {
-    localStorage.clear()
+    props.logoutUser()
     return (<Redirect to="/" />)
   }
 
   return (
     <div>
       <Router>
-        <NavBar />
+        <NavBar isLoggedIn={props.isLoggedIn}/>
         <div style={{padding: 20}}>
           <Switch>
             <Route exact path='/' component={null}/>
@@ -41,4 +42,16 @@ function App() {
   );
 }
 
-export default connect(null)(App);
+const mapStateToProps = (state) => {
+  return {
+    isLoggedIn: !!state.user.email
+  }
+}
+
+const mapDispatchToProps = (dispatch) => {
+  return {
+    logoutUser: () => dispatch(logoutUser())
+  }
+}
+
+export default connect(mapStateToProps, mapDispatchToProps)(App);
