@@ -40,17 +40,20 @@ class TimerCard extends Component {
         const days = Math.floor(time / (60 * 60 * 24))
 
         return (
-            <div className='timer-card' id={this.props.timer.id}>
-                <p>{this.props.timer.title}</p>
-                Days: {days}
-                <br/>
-                Hours: {hours}
-                <br/>
-                Minutes: {minutes}
-                <br/>
-                Seconds: {seconds}
-                <br/>
-                <button onClick={() => this.props.deleteTimer(this.props.timer.id)}>X</button>
+            <div className='container' id={this.props.timer.id}>
+                <h1 id='headline'>
+                        {this.props.timer.title}
+                </h1>
+
+                <div className='countdown'>
+                    <ul>
+                        <li><span id='days'>{days}</span>Days</li>
+                        <li><span id='hours'>{hours}</span>Hours</li>
+                        <li><span id='minutes'>{minutes}</span>Minutes</li>
+                        <li><span id='seconds'>{seconds}</span>Seconds</li>
+                    </ul>
+                </div>
+                <button className='deleteButton' onClick={() => this.props.deleteTimer(this.props.timer.id)}>X</button>
             </div>
         );
     }
