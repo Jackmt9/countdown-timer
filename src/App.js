@@ -1,5 +1,5 @@
 import './App.css';
-import TimerContainer from './containers/TimerContainer';
+import TimerContainer from './containers/TimerContainer/TimerContainer.js';
 import { BrowserRouter as Router, Switch, Route, Redirect } from "react-router-dom";
 import NavBar from './components/NavBar/NavBar'
 import LoginForm from './components/LoginForm/LoginForm'

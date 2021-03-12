@@ -1,8 +1,9 @@
 import React, { Component } from 'react';
-import TimerForm from '../components/TimerForm'
-import TimerCard from '../components/TimerCard/TimerCard'
+import TimerForm from '../../components/TimerForm'
+import TimerCard from '../../components/TimerCard/TimerCard'
 import { connect } from 'react-redux'
-import { addTimer, deleteTimer, getTimers } from '../actions/TimerActions'
+import { addTimer, deleteTimer, getTimers } from '../../actions/TimerActions'
+import './TimerContainer.css'
 
 class TimerContainer extends Component {
     
