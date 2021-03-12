@@ -9,7 +9,7 @@ class TimerCard extends Component {
 
     state = {
         // timeRemaining in seconds
-        timeRemaining: this.getInitialTime()
+        timeRemaining: this.getInitialTime(),
     }
 
     componentDidMount() {
@@ -34,10 +34,16 @@ class TimerCard extends Component {
 
     render() { 
         const time = this.state.timeRemaining
-        const seconds = Math.floor(time % 60)
-        const minutes = Math.floor((time / 60) % 60)
-        const hours = Math.floor((time / (60 * 60)) % 24)
-        const days = Math.floor(time / (60 * 60 * 24))
+        let seconds = Math.floor(time % 60)
+        let minutes = Math.floor((time / 60) % 60)
+        let hours = Math.floor((time / (60 * 60)) % 24)
+        let days = Math.floor(time / (60 * 60 * 24))
+        if (seconds + minutes + hours + days === 0){
+            days = 'D'
+            hours = 'O'
+            minutes = 'N'
+            seconds = 'E'
+        }
 
         return (
             <div className='container' id={this.props.timer.id}>
