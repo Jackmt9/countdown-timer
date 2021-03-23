@@ -1,9 +1,7 @@
-import cuid from 'cuid'
-
 const TimerReducer = (state = [], action) => {
     switch(action.type){
         case 'ADD_TIMER':
-            return state.concat({title: action.timer.title, time: action.timer.time, id: cuid()})
+            return state.concat({title: action.timer.title, time: action.timer.time})
             
         case 'DELETE_TIMER':
             return state.filter(timer => timer.id !== action.id)  
