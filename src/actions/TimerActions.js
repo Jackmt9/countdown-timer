@@ -74,3 +74,9 @@ export const getTimers = () => {
         })
     }
 }
+
+export const sortTimers = (sortType='ENDING_SOONEST') => {
+    return (dispatch) => {
+        dispatch({type: 'SORT_TIMERS', sortType})
+    }
+}
