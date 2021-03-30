@@ -20,7 +20,6 @@ class TimerContainer extends Component {
                 <button onClick={() => this.props.sortTimers('ENDING_SOONEST')}>Ending Soonest</button>
                 <button onClick={() => this.props.sortTimers('ENDING_LAST')}>Ending Last</button>
                 <button onClick={() => this.props.sortTimers('ALPHABETICAL')}>Alphabetically</button>
-                {/* <button onClick={() => this.props.sortTimers('DATE_CREATED')}>Date Created</button> */}
                 <h2>Timers</h2>
                 <div className='timer-cards'>
                 {this.props.timers.map(timer => { return <TimerCard key={timer.id} timer={timer} deleteTimer={this.props.deleteTimer} /> })}
@@ -40,7 +39,6 @@ const mapDispatchToProps = (dispatch) => {
     return {
         addTimer: (timer) => dispatch(addTimer(timer)),
         deleteTimer: (id) => dispatch(deleteTimer(id)),
-        // updateTimer: (timer) => dispatch({type: 'UPDATE_TIMER', timer}),
         getTimers: () => dispatch(getTimers()),
         sortTimers: (sortType) => dispatch(sortTimers(sortType))
     }

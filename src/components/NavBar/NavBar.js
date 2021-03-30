@@ -23,11 +23,11 @@ const NavBar = ({isLoggedIn}) => {
                         Logout
                     </NavLink>
                     </li>
-                    <li className="navbar-brand">
+                    {/* <li className="navbar-brand">
                         <NavLink to='/profile' className="nav-link">
                             Profile
                         </NavLink>
-                    </li>
+                    </li> */}
                     </>
                     :
                     <>
