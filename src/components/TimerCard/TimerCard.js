@@ -33,7 +33,7 @@ function TimerCard({timer, deleteTimer}) {
     }
 
     return (
-        <div className='container' id={timer.id} style={{backgroundColor: (time === 0)? 'pink' : 'blue'}}>
+        <div className='container' id={timer.id} style={{backgroundColor: (time === 0)? 'pink' : '#86db64'}}>
             <h1 id='headline'>
                     {timer.title}
             </h1>
